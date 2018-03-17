@@ -12,7 +12,7 @@ public class MainTest {
     public static void setup() {
         String port = System.getProperty("server.port");
         if (port == null) {
-            RestAssured.port = Integer.valueOf(8080);
+            RestAssured.port = Integer.valueOf(80);
         } else {
             RestAssured.port = Integer.valueOf(port);
         }
@@ -29,7 +29,6 @@ public class MainTest {
             baseHost = "http://ws.audioscrobbler.com/";
         }
         RestAssured.baseURI = baseHost;
-        RestAssured.port = 80;
         RestAssured.given().param("api_key", "c32a740e3b0484adc018a11e05902a30");
     }
 
