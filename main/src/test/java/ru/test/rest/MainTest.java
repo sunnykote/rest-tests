@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class MainTest {
     @BeforeClass
@@ -33,7 +34,7 @@ public class MainTest {
     }
 
     @Test
-    public void test() {
+    public void testArtistSearch() {
 //        HashMap<String, String> params = new HashMap<String, String>(){{
 //            put("method","artist.search");
 //            put("artist","cher");
@@ -48,4 +49,17 @@ public class MainTest {
                 .asString();
         System.out.println(s);
     }
+
+    @Test
+    public void testArtistGetInfo() {
+        given()
+                .param("api_key", "c32a740e3b0484adc018a11e05902a30")
+                .param("method", "artist.getinfo")
+                .param("artist", "Madonna")
+                .param("format", "json")
+                .get("")
+                .then().body("artist.name", equalTo("Madonna"));
+    }
+
+
 }
