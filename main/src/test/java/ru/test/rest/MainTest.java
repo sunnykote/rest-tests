@@ -61,5 +61,17 @@ public class MainTest {
                 .then().body("artist.name", equalTo("Madonna"));
     }
 
+    @Test
+    public void testGeoGetTopArtists () {
+        String s = given()
+                .param("api_key", "c32a740e3b0484adc018a11e05902a30")
+                .param("method", "geo.gettopartists")
+                .param("country", "belarus")
+                .param("format", "json")
+                .get("")
+                .asString();
+        System.out.println(s);
+    }
+
 
 }
